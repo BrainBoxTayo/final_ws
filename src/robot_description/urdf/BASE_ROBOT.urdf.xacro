@@ -1,0 +1,277 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="Base">
+    <link name="dummy">
+    </link>
+    <joint name="dummy_joint" type="fixed">
+        <parent link="dummy" />
+        <child link="base_link" />
+    </joint>
+    <link name="base_link">
+        <inertial>
+            <origin
+                xyz="1.2182E-05 2.334E-05 0.0089063"
+                rpy="0 0 0" />
+            <mass
+                value=".16211" />
+            <inertia
+                ixx="0.0001472"
+                ixy="8.7863E-09"
+                ixz="-1.4391E-08"
+                iyy="0.00036976"
+                iyz="4.2045E-10"
+                izz="0.00050482" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://robot_description/meshes/base_link.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.95686 0.95686 0.95686 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://robot_description/meshes/base_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="LBW_LINK">
+        <inertial>
+            <origin
+                xyz="5.206E-09 -4.8272E-10 -0.00089187"
+                rpy="0 0 0" />
+            <mass
+                value="0.049376" />
+            <inertia
+                ixx="1.3526E-05"
+                ixy="-6.5857E-20"
+                ixz="-5.8823E-13"
+                iyy="1.3526E-05"
+                iyz="-4.9998E-12"
+                izz="1.8891E-05" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://robot_description/meshes/LBW_LINK.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://robot_description/meshes/LBW_LINK.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="LBW_JOINT" type="continuous">
+        <origin
+            xyz="-0.08315 0.075096 -0.016326"
+            rpy="-1.5708 -0.22308 0" />
+        <parent
+            link="base_link" />
+        <child
+            link="LBW_LINK" />
+        <axis
+            xyz="0 0 1" />
+        <limit
+            effort="100"
+            velocity="23.03" />
+        <dynamics
+            damping="0.1"
+            friction="0.1" />
+    </joint>
+    <link name="LFW_LINK">
+        <inertial>
+            <origin
+                xyz="5.206E-09 -4.8272E-10 -0.00089187"
+                rpy="0 0 0" />
+            <mass
+                value="0.049376" />
+            <inertia
+                ixx="1.3526E-05"
+                ixy="-7.0304E-20"
+                ixz="-5.8823E-13"
+                iyy="1.3526E-05"
+                iyz="-4.9998E-12"
+                izz="1.8891E-05" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://robot_description/meshes/LFW_LINK.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://robot_description/meshes/LFW_LINK.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="LFW_JOINT"
+        type="continuous">
+        <origin
+            xyz="0.08315 0.075096 -0.016326"
+            rpy="1.5708 -1.0971 3.1416" />
+        <parent
+            link="base_link" />
+        <child
+            link="LFW_LINK" />
+        <axis
+            xyz="0 0 1" />
+        <limit
+            effort="100"
+            velocity="23.03" />
+        <dynamics
+            damping="0.1"
+            friction="0.1" />
+    </joint>
+    <link name="RBW_LINK">
+        <inertial>
+            <origin
+                xyz="5.206E-09 4.8272E-10 0.00089187"
+                rpy="0 0 0" />
+            <mass
+                value="0.049376" />
+            <inertia
+                ixx="1.3526E-05"
+                ixy="8.4756E-20"
+                ixz="5.8823E-13"
+                iyy="1.3526E-05"
+                iyz="-4.9998E-12"
+                izz="1.8891E-05" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://robot_description/meshes/RBW_LINK.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://robot_description/meshes/RBW_LINK.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="RBW_JOINT"
+        type="continuous">
+        <origin
+            xyz="-0.08315 -0.075096 -0.016326"
+            rpy="1.5708 -1.5483 3.1416" />
+        <parent
+            link="base_link" />
+        <child
+            link="RBW_LINK" />
+        <axis
+            xyz="0 0 1" />
+        <limit
+            effort="100"
+            velocity="23.03" />
+        <dynamics
+            damping="0.1"
+            friction="0.1" />
+    </joint>
+    <link name="RFW_LINK">
+        <inertial>
+            <origin
+                xyz="-5.206E-09 -4.8272E-10 0.00089187"
+                rpy="0 0 0" />
+            <mass
+                value="0.049376" />
+            <inertia
+                ixx="1.3526E-05"
+                ixy="5.4634E-20"
+                ixz="-5.8823E-13"
+                iyy="1.3526E-05"
+                iyz="4.9998E-12"
+                izz="1.8891E-05" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://robot_description/meshes/RFW_LINK.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://robot_description/meshes/RFW_LINK.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="RFW_JOINT"
+        type="continuous">
+        <origin
+            xyz="0.08315 -0.075096 -0.016326"
+            rpy="1.5708 -0.99328 -3.1416" />
+        <parent
+            link="base_link" />
+        <child
+            link="RFW_LINK" />
+        <axis
+            xyz="0 0 1" />
+        <limit
+            effort="100"
+            velocity="23.03" />
+        <dynamics
+            damping="0.1"
+            friction="0.1" />
+    </joint>
+<xacro:include filename="$(find robot_description)/urdf/BASE_ROBOT.gazebo"/>
+
+</robot>

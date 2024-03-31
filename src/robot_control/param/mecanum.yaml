@@ -1,0 +1,5 @@
+wheel:
+    diameter: 0.06
+    separation:
+        vertical: 0.083
+        horizontal: 0.075
