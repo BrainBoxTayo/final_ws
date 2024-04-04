@@ -41,6 +41,6 @@ roslaunch robot_description display.launch
 
 ___
 ## to do list:
-- Update the URDF files to the current robot model (we started with a differnet robot model)
+- Update the URDF files to the current robot model (we started with a different robot model)
 - Currently you can also control the robot with a ps4 controller, I would update the README with how to do this later on.
 - add control for the robot arm.
