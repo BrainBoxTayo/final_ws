@@ -1,12 +1,18 @@
 <?xml version="1.0"?>
 <launch>
-    <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+     <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="true"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
     <arg name="model" default="$(find robot_description)/urdf/BASE_ROBOT.urdf.xacro"/>
     <rosparam command="load" file="$(find robot_control)/param/mecanum.yaml"/>
-    <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find robot_description)/urdf/BASE_ROBOT.urdf.xacro'"/>
     
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-        args="-param robot_description -urdf -model Base" />
+        args="-param robot_description -urdf -model Tayson" />
 
     <node pkg="robot_control" type="mecanum_controller.py" name="mecanum" />
 

@@ -1,10 +1,12 @@
 <?xml version="1.0"?>
-<robot name="Base">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="Tayson">
+<xacro:property name="body_color" value="Gazebo/Silver">
+  </xacro:property>  
     <gazebo>
         <!--<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
           <robotNamespace>/</robotNamespace>
         </plugin>-->
-    
+  
         <plugin name="nexus_ros_force_based_move" filename="libnexus_ros_force_based_move.so">
           <commandTopic>cmd_vel</commandTopic>
           <odometryTopic>odom</odometryTopic>
@@ -22,28 +24,195 @@
         </plugin>
       </gazebo>
     
-      <gazebo reference="LFW_LINK">
-        <material>Gazebo/Black</material>
-        <mu1>0.0</mu1>
-        <mu2>0.0</mu2>
-      </gazebo>
-    
-      <gazebo reference="LBW_LINK">
-        <material>Gazebo/Black</material>
-        <mu1>0.0</mu1>
-        <mu2>0.0</mu2>
-      </gazebo>
-    
-      <gazebo reference="RFW_LINK">
-        <material>Gazebo/Black</material>
-        <mu1>0.0</mu1>
-        <mu2>0.0</mu2>
-      </gazebo>
-    
-      <gazebo reference="RBW_LINK">
-        <material>Gazebo/Black</material>
-        <mu1>0.0</mu1>
-        <mu2>0.0</mu2>
-      </gazebo>
+      <gazebo reference="base_link">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="mecanumWheelHLVR_1">
+  <material>${body_color}</material>
+  <mu1>0.0</mu1>
+  <mu2>0.0</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="mecanumWheelHLVR_2">
+  <material>${body_color}</material>
+  <mu1>0.0</mu1>
+  <mu2>0.0</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="mecanumWheelHLVR_4">
+  <material>${body_color}</material>
+  <mu1>0.0</mu1>
+  <mu2>0.0</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="base_1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="Mg995_v1_1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="Mg995_v1__2__1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="Mg995_v1__1__1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="HAND_BASE_PROTO_VER_2_1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="forearm_1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="pinky_finger_base_2">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="pinky_finger_middle_2">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="pinky_finger_tip_2">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="pinky_finger_base_1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="pinky_finger_middle_1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="pinky_finger_tip_1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="inder_finger_base_3">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="inder_finger_middle_3">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="index_finger_tip_3">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="inder_finger_base_1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="inder_finger_middle_1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="index_finger_tip_1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="inder_finger_base_2">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="inder_finger_middle_2">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="index_finger_tip_2">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="TOP_COVER_PROTO_VER2_1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="mecanumWheelHLVR_3">
+  <material>${body_color}</material>
+  <mu1>0.0</mu1>
+  <mu2>0.0</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
     
 </robot>
