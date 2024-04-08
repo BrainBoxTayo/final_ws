@@ -1,207 +1,208 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="Tayson">
-    
 
-<xacro:macro name="base_transmission" params="prefix ">
 
-<transmission name="${prefix}_LINK_trans" type="SimpleTransmission">
-  <type>transmission_interface/SimpleTransmission</type>
-  <actuator name="${prefix}_LINK_motor">
-   <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-   <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-  <joint name="${prefix}_JOINT">
-   <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-  </joint>
-</transmission>
-</xacro:macro>
+  <xacro:macro name="base_transmission" params="prefix ">
 
-<transmission name="hSERV_HAND_tran">
-  <type>transmission_interface/SimpleTransmission</type>
-  <joint name="hSERV_HAND">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-  </joint>
-  <actuator name="hSERV_HAND_actr">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-</transmission>
 
-<transmission name="BASE_FOREARM_tran">
-  <type>transmission_interface/SimpleTransmission</type>
-  <joint name="BASE_FOREARM">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-  </joint>
-  <actuator name="BASE_FOREARM_actr">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-</transmission>
+    <transmission name="${prefix}_LINK_trans" type="SimpleTransmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="${prefix}_LINK_motor">
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+      <joint name="${prefix}_JOINT">
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+  </xacro:macro>
 
-<transmission name="HAND_thumbbase_tran">
-  <type>transmission_interface/SimpleTransmission</type>
-  <joint name="HAND_thumbbase">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-  </joint>
-  <actuator name="HAND_thumbbase_actr">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-</transmission>
+  <transmission name="hSERV_HAND_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="hSERV_HAND">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="hSERV_HAND_actr">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
-<transmission name="thumbbase_thumbmiddle_tran">
-  <type>transmission_interface/SimpleTransmission</type>
-  <joint name="thumbbase_thumbmiddle">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-  </joint>
-  <actuator name="thumbbase_thumbmiddle_actr">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-</transmission>
+  <transmission name="BASE_FOREARM_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="BASE_FOREARM">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="BASE_FOREARM_actr">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
-<transmission name="thumbmiddle_thumbtip_tran">
-  <type>transmission_interface/SimpleTransmission</type>
-  <joint name="thumbmiddle_thumbtip">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-  </joint>
-  <actuator name="thumbmiddle_thumbtip_actr">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-</transmission>
+  <transmission name="HAND_thumbbase_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="HAND_thumbbase">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="HAND_thumbbase_actr">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
-<transmission name="HAND_pinkybase_tran">
-  <type>transmission_interface/SimpleTransmission</type>
-  <joint name="HAND_pinkybase">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-  </joint>
-  <actuator name="HAND_pinkybase_actr">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-</transmission>
+  <transmission name="thumbbase_thumbmiddle_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="thumbbase_thumbmiddle">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="thumbbase_thumbmiddle_actr">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
-<transmission name="pinkybase_pinkymiddle_tran">
-  <type>transmission_interface/SimpleTransmission</type>
-  <joint name="pinkybase_pinkymiddle">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-  </joint>
-  <actuator name="pinkybase_pinkymiddle_actr">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-</transmission>
+  <transmission name="thumbmiddle_thumbtip_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="thumbmiddle_thumbtip">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="thumbmiddle_thumbtip_actr">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
-<transmission name="pinkymiddle_pinkytip_tran">
-  <type>transmission_interface/SimpleTransmission</type>
-  <joint name="pinkymiddle_pinkytip">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-  </joint>
-  <actuator name="pinkymiddle_pinkytip_actr">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-</transmission>
+  <transmission name="HAND_pinkybase_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="HAND_pinkybase">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="HAND_pinkybase_actr">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
-<transmission name="HAND_ringbase_tran">
-  <type>transmission_interface/SimpleTransmission</type>
-  <joint name="HAND_ringbase">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-  </joint>
-  <actuator name="HAND_ringbase_actr">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-</transmission>
+  <transmission name="pinkybase_pinkymiddle_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="pinkybase_pinkymiddle">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="pinkybase_pinkymiddle_actr">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
-<transmission name="ringbase_ringmiddle_tran">
-  <type>transmission_interface/SimpleTransmission</type>
-  <joint name="ringbase_ringmiddle">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-  </joint>
-  <actuator name="ringbase_ringmiddle_actr">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-</transmission>
+  <transmission name="pinkymiddle_pinkytip_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="pinkymiddle_pinkytip">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="pinkymiddle_pinkytip_actr">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
-<transmission name="ringmiddle_ringtip_tran">
-  <type>transmission_interface/SimpleTransmission</type>
-  <joint name="ringmiddle_ringtip">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-  </joint>
-  <actuator name="ringmiddle_ringtip_actr">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-</transmission>
+  <transmission name="HAND_ringbase_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="HAND_ringbase">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="HAND_ringbase_actr">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
-<transmission name="HAND_middlebase_tran">
-  <type>transmission_interface/SimpleTransmission</type>
-  <joint name="HAND_middlebase">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-  </joint>
-  <actuator name="HAND_middlebase_actr">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-</transmission>
+  <transmission name="ringbase_ringmiddle_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="ringbase_ringmiddle">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="ringbase_ringmiddle_actr">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
-<transmission name="middlebase_middlemiddle_tran">
-  <type>transmission_interface/SimpleTransmission</type>
-  <joint name="middlebase_middlemiddle">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-  </joint>
-  <actuator name="middlebase_middlemiddle_actr">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-</transmission>
+  <transmission name="ringmiddle_ringtip_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="ringmiddle_ringtip">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="ringmiddle_ringtip_actr">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
-<transmission name="middlemiddle_middletip_tran">
-  <type>transmission_interface/SimpleTransmission</type>
-  <joint name="middlemiddle_middletip">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-  </joint>
-  <actuator name="middlemiddle_middletip_actr">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-</transmission>
+  <transmission name="HAND_middlebase_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="HAND_middlebase">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="HAND_middlebase_actr">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
-<transmission name="HAND_indexbase_tran">
-  <type>transmission_interface/SimpleTransmission</type>
-  <joint name="HAND_indexbase">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-  </joint>
-  <actuator name="HAND_indexbase_actr">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-</transmission>
+  <transmission name="middlebase_middlemiddle_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="middlebase_middlemiddle">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="middlebase_middlemiddle_actr">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
-<transmission name="indexbase_indexmiddle_tran">
-  <type>transmission_interface/SimpleTransmission</type>
-  <joint name="indexbase_indexmiddle">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-  </joint>
-  <actuator name="indexbase_indexmiddle_actr">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-</transmission>
+  <transmission name="middlemiddle_middletip_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="middlemiddle_middletip">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="middlemiddle_middletip_actr">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
-<transmission name="indexmiddle_indextip_tran">
-  <type>transmission_interface/SimpleTransmission</type>
-  <joint name="indexmiddle_indextip">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-  </joint>
-  <actuator name="indexmiddle_indextip_actr">
-    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-</transmission>
+  <transmission name="HAND_indexbase_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="HAND_indexbase">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="HAND_indexbase_actr">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="indexbase_indexmiddle_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="indexbase_indexmiddle">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="indexbase_indexmiddle_actr">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="indexmiddle_indextip_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="indexmiddle_indextip">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="indexmiddle_indextip_actr">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
 
 </robot>
