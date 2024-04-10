@@ -13,6 +13,9 @@ find_package(catkin REQUIRED COMPONENTS
   std_srvs
   tf
   message_generation
+  controller_manager
+  joint_state_controller
+  robot_state_publisher
 )
 
 include_directories(include ${catkin_INCLUDE_DIRS})

@@ -1,0 +1,35 @@
+Tayson:
+  # publish all joint states
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+  # Position controllers and set up PID
+  BASE_FOREARM_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: BASE_FOREARM
+    pid: {p: 700.0, i: 0.01, d: 10.0}
+  
+  hSERV_HAND_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: hSERV_HAND
+    pid: {p: 700.0, i: 0.01, d: 10.0}
+  
+  HAND_pinkybase_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: HAND_pinkybase
+    pid: {p: 700.0, i: 0.01, d: 10.0}
+
+  HAND_ringbase_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: HAND_ringbase
+    pid: {p: 700.0, i: 0.01, d: 10.0}
+  
+  HAND_middlebase_position_controller:
+   type: effort_controllers/JointPositionController
+   joint: HAND_middlebase
+   pid: {p: 700.0, i: 0.01, d: 10.0}
+
+  HAND_indexbase_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: HAND_indexbase
+    pid: {p: 700.0, i: 0.01, d: 10.0}

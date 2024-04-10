@@ -649,6 +649,32 @@ nexus_ros_force_based_move/fast:
 .PHONY : nexus_ros_force_based_move/fast
 
 #=============================================================================
+# Target rules for targets named controller_manager_msgs_generate_messages_py
+
+# Build rule for target.
+controller_manager_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 controller_manager_msgs_generate_messages_py
+.PHONY : controller_manager_msgs_generate_messages_py
+
+# fast build rule for target.
+controller_manager_msgs_generate_messages_py/fast:
+	$(MAKE) -f robot_description/CMakeFiles/controller_manager_msgs_generate_messages_py.dir/build.make robot_description/CMakeFiles/controller_manager_msgs_generate_messages_py.dir/build
+.PHONY : controller_manager_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named controller_manager_msgs_generate_messages_cpp
+
+# Build rule for target.
+controller_manager_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 controller_manager_msgs_generate_messages_cpp
+.PHONY : controller_manager_msgs_generate_messages_cpp
+
+# fast build rule for target.
+controller_manager_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f robot_description/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/build.make robot_description/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/build
+.PHONY : controller_manager_msgs_generate_messages_cpp/fast
+
+#=============================================================================
 # Target rules for targets named tf2_msgs_generate_messages_py
 
 # Build rule for target.
@@ -831,6 +857,19 @@ actionlib_msgs_generate_messages_lisp/fast:
 .PHONY : actionlib_msgs_generate_messages_lisp/fast
 
 #=============================================================================
+# Target rules for targets named controller_manager_msgs_generate_messages_nodejs
+
+# Build rule for target.
+controller_manager_msgs_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 controller_manager_msgs_generate_messages_nodejs
+.PHONY : controller_manager_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+controller_manager_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f robot_description/CMakeFiles/controller_manager_msgs_generate_messages_nodejs.dir/build.make robot_description/CMakeFiles/controller_manager_msgs_generate_messages_nodejs.dir/build
+.PHONY : controller_manager_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
 # Target rules for targets named std_srvs_generate_messages_py
 
 # Build rule for target.
@@ -842,6 +881,19 @@ std_srvs_generate_messages_py: cmake_check_build_system
 std_srvs_generate_messages_py/fast:
 	$(MAKE) -f robot_description/CMakeFiles/std_srvs_generate_messages_py.dir/build.make robot_description/CMakeFiles/std_srvs_generate_messages_py.dir/build
 .PHONY : std_srvs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named controller_manager_msgs_generate_messages_lisp
+
+# Build rule for target.
+controller_manager_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 controller_manager_msgs_generate_messages_lisp
+.PHONY : controller_manager_msgs_generate_messages_lisp
+
+# fast build rule for target.
+controller_manager_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f robot_description/CMakeFiles/controller_manager_msgs_generate_messages_lisp.dir/build.make robot_description/CMakeFiles/controller_manager_msgs_generate_messages_lisp.dir/build
+.PHONY : controller_manager_msgs_generate_messages_lisp/fast
 
 #=============================================================================
 # Target rules for targets named tf_generate_messages_py
@@ -959,6 +1011,19 @@ actionlib_generate_messages_eus: cmake_check_build_system
 actionlib_generate_messages_eus/fast:
 	$(MAKE) -f robot_description/CMakeFiles/actionlib_generate_messages_eus.dir/build.make robot_description/CMakeFiles/actionlib_generate_messages_eus.dir/build
 .PHONY : actionlib_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named controller_manager_msgs_generate_messages_eus
+
+# Build rule for target.
+controller_manager_msgs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 controller_manager_msgs_generate_messages_eus
+.PHONY : controller_manager_msgs_generate_messages_eus
+
+# fast build rule for target.
+controller_manager_msgs_generate_messages_eus/fast:
+	$(MAKE) -f robot_description/CMakeFiles/controller_manager_msgs_generate_messages_eus.dir/build.make robot_description/CMakeFiles/controller_manager_msgs_generate_messages_eus.dir/build
+.PHONY : controller_manager_msgs_generate_messages_eus/fast
 
 #=============================================================================
 # Target rules for targets named actionlib_generate_messages_lisp
@@ -1088,6 +1153,8 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_eus"
 	@echo "... nexus_ros_force_based_move"
+	@echo "... controller_manager_msgs_generate_messages_py"
+	@echo "... controller_manager_msgs_generate_messages_cpp"
 	@echo "... tf2_msgs_generate_messages_py"
 	@echo "... std_srvs_generate_messages_eus"
 	@echo "... nav_msgs_generate_messages_lisp"
@@ -1102,7 +1169,9 @@ help:
 	@echo "... std_srvs_generate_messages_lisp"
 	@echo "... nav_msgs_generate_messages_eus"
 	@echo "... actionlib_msgs_generate_messages_lisp"
+	@echo "... controller_manager_msgs_generate_messages_nodejs"
 	@echo "... std_srvs_generate_messages_py"
+	@echo "... controller_manager_msgs_generate_messages_lisp"
 	@echo "... tf_generate_messages_py"
 	@echo "... actionlib_msgs_generate_messages_nodejs"
 	@echo "... actionlib_generate_messages_py"
@@ -1112,6 +1181,7 @@ help:
 	@echo "... tf2_msgs_generate_messages_eus"
 	@echo "... actionlib_msgs_generate_messages_cpp"
 	@echo "... actionlib_generate_messages_eus"
+	@echo "... controller_manager_msgs_generate_messages_eus"
 	@echo "... actionlib_generate_messages_lisp"
 	@echo "... actionlib_generate_messages_nodejs"
 	@echo "... std_srvs_generate_messages_cpp"

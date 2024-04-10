@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<launch>
+    <param name="robot_description"
+        command="$(find xacro)/xacro $(find robot_description)/urdf/BASE_ROBOT.urdf.xacro" />
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="paused" value="true" />
+        <arg name="use_sim_time" value="true" />
+        <arg name="gui" value="true" />
+        <arg name="debug" value="false" />
+    </include>
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+        args="-param robot_description -urdf -model Tayson" />
+
+    <!-- load controllers-->
+    <rosparam command="load" file="$(find robot_description)/launch/joints_controllers.yaml" />
+
+    <!-- Load node controller manager-->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner"
+        respawn="false" output="screen" ns="/Tayson"
+        args="joint_state_controller
+                BASE_FOREARM_position_controller
+                hSERV_HAND_position_controller
+                HAND_pinkybase_position_controller
+                HAND_ringbase_position_controller
+                HAND_middlebase_position_controller
+                HAND_indexbase_position_controller">
+    </node>
+
+    <!-- convert joint states to TF transform for rviz and rqt-->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen">
+        <remap from="/joint_states" to="/Tayson/joint_states" />
+    </node>
+
+    <node name="rqt_reconfigure" pkg="rqt_gui" type="rqt_gui"  output="screen">
+        
+    </node>
+</launch>

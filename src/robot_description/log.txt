@@ -1,0 +1,6 @@
+for the transmission we use the Simple transmission type, assign joint name and use the EffortJointInterface hardware interface.
+
+Added joint_controller.yaml, contains the names, types and pid values for the robot
+
+Tuning the PID:
+- send a sinusodual command and compare with the real value
