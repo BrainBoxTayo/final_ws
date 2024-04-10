@@ -33,7 +33,7 @@
         <remap from="/joint_states" to="/Tayson/joint_states" />
     </node>
 
-    <node name="rqt_reconfigure" pkg="rqt_gui" type="rqt_gui"  output="screen">
-        
+    <node name="rqt_reconfigure" pkg="rqt_gui" type="rqt_gui" output="screen">
+
     </node>
 </launch>
