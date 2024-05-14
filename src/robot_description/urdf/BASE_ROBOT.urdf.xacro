@@ -295,6 +295,7 @@
     </inertial>
     <visual>
       <origin xyz="-0.019849 -0.384881 -0.642689" rpy="0 0 0" />
+      
       <geometry>
         <mesh filename="package://robot_description/meshes/pinky_finger_base_2.stl"
           scale="0.001 0.001
@@ -639,28 +640,28 @@
   </link>
 
 
-  <joint name="RFW_JOINT" type="continuous">
+  <joint name="RFW_JOINT" type="fixed">
     <origin xyz="0.1 -0.1 0.03145" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="mecanumWheelHLVR_1" />
     <axis xyz="-0.0 -1.0 -0.0" />
   </joint>
 
-  <joint name="RBW_JOINT" type="continuous">
+  <joint name="RBW_JOINT" type="fixed">
     <origin xyz="-0.1 -0.1 0.03145" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="mecanumWheelHLVR_2" />
     <axis xyz="-0.0 -1.0 -0.0" />
   </joint>
 
-  <joint name="LFW_JOINT" type="continuous">
+  <joint name="LFW_JOINT" type="fixed">
     <origin xyz="0.1 0.1 0.03145" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="mecanumWheelHLVR_4" />
     <axis xyz="0.0 1.0 0.0" />
   </joint>
 
-  <joint name="LBW_JOINT" type="continuous">
+  <joint name="LBW_JOINT" type="fixed">
     <origin xyz="-0.1 0.1 0.03145" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="mecanumWheelHLVR_3" />
@@ -690,7 +691,7 @@
     <parent link="base_1" />
     <child link="forearm_1" />
     <axis xyz="-0.0 -1.0 -0.0" />
-    <limit upper="1.57" lower="-1.57" effort="50" velocity="-1" />
+    <limit upper="1.40" lower="-1.40" effort="50" velocity="-1" />
   </joint>
 
   <joint name="FOREARM_hSERV" type="fixed">
@@ -704,7 +705,7 @@
     <parent link="Mg995_v1__1__1" />
     <child link="HAND_BASE_PROTO_VER_2_1" />
     <axis xyz="0.0 -0.0 -1.0" />
-    <limit upper="1.570796" lower="-1.57" effort="100" velocity="100" />
+    <limit upper="1.570796" lower="-1.57" effort="50" velocity="10" />
   </joint>
 
   <joint name="HANDCOVER" type="fixed">
@@ -719,7 +720,7 @@
     <parent link="HAND_BASE_PROTO_VER_2_1" />
     <child link="pinky_finger_base_1" />
     <axis xyz="-0.0 1.0 -0.0" />
-    <limit upper="1.570796" lower="0.0" effort="100" velocity="100" />
+    <limit upper="1.570796" lower="0.0" effort="50" velocity="10" />
   </joint>
 
   <joint name="pinkybase_pinkymiddle" type="fixed">
@@ -739,7 +740,7 @@
     <parent link="HAND_BASE_PROTO_VER_2_1" />
     <child link="inder_finger_base_3" />
     <axis xyz="0.0 1.0 0.0" />
-    <limit upper="0.0" lower="1.570796" effort="100" velocity="100" />
+    <limit upper="1.570796" lower="0.0" effort="10" velocity="10" />
   </joint>
 
   <joint name="ringbase_ringmiddle" type="fixed">
@@ -759,7 +760,7 @@
     <parent link="HAND_BASE_PROTO_VER_2_1" />
     <child link="inder_finger_base_1" />
     <axis xyz="0.0 -1.0 0.0" />
-    <limit upper="0.0" lower="-1.570796" effort="100" velocity="100" />
+    <limit upper="0.0" lower="-1.570796" effort="10" velocity="10" />
   </joint>
 
   <joint name="middlebase_middlemiddle" type="fixed">
@@ -779,7 +780,7 @@
     <parent link="HAND_BASE_PROTO_VER_2_1" />
     <child link="inder_finger_base_2" />
     <axis xyz="0.0 -1.0 0.0" />
-    <limit upper="0.0" lower="-1.570796" effort="100" velocity="100" />
+    <limit upper="0.0" lower="-1.570796" effort="10" velocity="10" />
   </joint>
 
   <joint name="indexbase_indexmiddle" type="fixed">
@@ -799,24 +800,20 @@
   <origin xyz="0.028 -0.072719 0.072898" rpy="0 0 0"/>
   <parent link="HAND_BASE_PROTO_VER_2_1"/>
   <child link="pinky_finger_base_2"/>
-  <axis xyz="-0 0 1"/>
+  <axis xyz="0 1 0"/>
   <limit upper="3.839724" lower="3.141593" effort="100" velocity="100"/>
 </joint>
 
-<joint name="thumbbase_thumbmiddle" type="revolute">
+<joint name="thumbbase_thumbmiddle" type="fixed">
   <origin xyz="0.075734 -0.311296 -0.155475" rpy="0 0 0"/>
   <parent link="pinky_finger_base_2"/>
   <child link="pinky_finger_middle_2"/>
-  <axis xyz="0.694658 -0.095071 -0.71303"/>
-  <limit upper="0.0" lower="-1.570796" effort="100" velocity="100"/>
 </joint>
 
-<joint name="thumbmiddle_thumbtip" type="revolute">
+<joint name="thumbmiddle_thumbtip" type="fixed">
   <origin xyz="0.000113 -0.006 0.034" rpy="0 0 0"/>
   <parent link="pinky_finger_middle_2"/>
   <child link="pinky_finger_tip_2"/>
-  <axis xyz="0.694658 -0.095071 -0.71303"/>
-  <limit upper="0.0" lower="-0.436332" effort="100" velocity="100"/>
 </joint> -->
 
 

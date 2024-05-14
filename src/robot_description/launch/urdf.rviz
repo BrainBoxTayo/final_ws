@@ -99,6 +99,10 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        dummy:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         forearm_1:
           Alpha: 1
           Show Axes: false
@@ -174,27 +178,12 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        pinky_finger_base_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         pinky_finger_middle_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        pinky_finger_middle_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         pinky_finger_tip_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        pinky_finger_tip_2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -226,6 +215,8 @@ Visualization Manager:
           Value: false
         base_link:
           Value: false
+        dummy:
+          Value: false
         forearm_1:
           Value: false
         inder_finger_base_1:
@@ -256,15 +247,9 @@ Visualization Manager:
           Value: false
         pinky_finger_base_1:
           Value: false
-        pinky_finger_base_2:
-          Value: true
         pinky_finger_middle_1:
           Value: false
-        pinky_finger_middle_2:
-          Value: false
         pinky_finger_tip_1:
-          Value: false
-        pinky_finger_tip_2:
           Value: false
       Marker Alpha: 1
       Marker Scale: 0.5
@@ -273,45 +258,42 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        base_link:
-          base_1:
-            Mg995_v1_1:
+        dummy:
+          base_link:
+            base_1:
+              Mg995_v1_1:
+                {}
+              Mg995_v1__2__1:
+                {}
+              forearm_1:
+                Mg995_v1__1__1:
+                  HAND_BASE_PROTO_VER_2_1:
+                    TOP_COVER_PROTO_VER2_1:
+                      {}
+                    inder_finger_base_1:
+                      inder_finger_middle_1:
+                        index_finger_tip_1:
+                          {}
+                    inder_finger_base_2:
+                      inder_finger_middle_2:
+                        index_finger_tip_2:
+                          {}
+                    inder_finger_base_3:
+                      inder_finger_middle_3:
+                        index_finger_tip_3:
+                          {}
+                    pinky_finger_base_1:
+                      pinky_finger_middle_1:
+                        pinky_finger_tip_1:
+                          {}
+            mecanumWheelHLVR_1:
               {}
-            Mg995_v1__2__1:
+            mecanumWheelHLVR_2:
               {}
-            forearm_1:
-              Mg995_v1__1__1:
-                HAND_BASE_PROTO_VER_2_1:
-                  TOP_COVER_PROTO_VER2_1:
-                    {}
-                  inder_finger_base_1:
-                    inder_finger_middle_1:
-                      index_finger_tip_1:
-                        {}
-                  inder_finger_base_2:
-                    inder_finger_middle_2:
-                      index_finger_tip_2:
-                        {}
-                  inder_finger_base_3:
-                    inder_finger_middle_3:
-                      index_finger_tip_3:
-                        {}
-                  pinky_finger_base_1:
-                    pinky_finger_middle_1:
-                      pinky_finger_tip_1:
-                        {}
-                  pinky_finger_base_2:
-                    pinky_finger_middle_2:
-                      pinky_finger_tip_2:
-                        {}
-          mecanumWheelHLVR_1:
-            {}
-          mecanumWheelHLVR_2:
-            {}
-          mecanumWheelHLVR_3:
-            {}
-          mecanumWheelHLVR_4:
-            {}
+            mecanumWheelHLVR_3:
+              {}
+            mecanumWheelHLVR_4:
+              {}
       Update Interval: 0
       Value: true
   Enabled: true
@@ -342,7 +324,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 2.1705124378204346
+      Distance: 1.3016462326049805
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -358,9 +340,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.18539786338806152
+      Pitch: 0.2253977507352829
       Target Frame: <Fixed Frame>
-      Yaw: 4.661729335784912
+      Yaw: 4.731730937957764
     Saved: ~
 Window Geometry:
   Displays:

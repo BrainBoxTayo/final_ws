@@ -84,7 +84,7 @@
 
 
 
-  <!-- <transmission name="HAND_thumbbase_tran">
+   <!-- <transmission name="HAND_thumbbase_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="HAND_thumbbase">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
@@ -93,9 +93,9 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
-  </transmission>
+  </transmission> -->
 
-  <transmission name="thumbbase_thumbmiddle_tran">
+  <!--<transmission name="thumbbase_thumbmiddle_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="thumbbase_thumbmiddle">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
@@ -115,11 +115,11 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
-  </transmission>
+  </transmission> -->
 
  
 
-  <transmission name="pinkybase_pinkymiddle_tran">
+  <!-- <transmission name="pinkybase_pinkymiddle_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="pinkybase_pinkymiddle">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>

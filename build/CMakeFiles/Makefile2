@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/brainboxtayo/final_ws/build
 
 # The main recursive "all" target.
 all: gtest/all
+all: arduino/all
 all: robot_control/all
 all: ps4-ros/all
 all: robot_description/all
@@ -62,6 +63,7 @@ all: robot_description/all
 
 # The main recursive "preinstall" target.
 preinstall: gtest/preinstall
+preinstall: arduino/preinstall
 preinstall: robot_control/preinstall
 preinstall: ps4-ros/preinstall
 preinstall: robot_description/preinstall
@@ -75,11 +77,30 @@ clean: CMakeFiles/clean_test_results.dir/clean
 clean: CMakeFiles/tests.dir/clean
 clean: CMakeFiles/download_extra_data.dir/clean
 clean: gtest/clean
+clean: arduino/clean
 clean: robot_control/clean
 clean: ps4-ros/clean
 clean: robot_description/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory arduino
+
+# Recursive "all" directory target.
+arduino/all:
+
+.PHONY : arduino/all
+
+# Recursive "preinstall" directory target.
+arduino/preinstall:
+
+.PHONY : arduino/preinstall
+
+# Recursive "clean" directory target.
+arduino/clean: arduino/CMakeFiles/_catkin_empty_exported_target.dir/clean
+
+.PHONY : arduino/clean
 
 #=============================================================================
 # Directory level rules for directory gtest
@@ -195,7 +216,7 @@ robot_control/preinstall:
 .PHONY : robot_control/preinstall
 
 # Recursive "clean" directory target.
-robot_control/clean: robot_control/CMakeFiles/_catkin_empty_exported_target.dir/clean
+robot_control/clean:
 
 .PHONY : robot_control/clean
 
@@ -497,31 +518,31 @@ gtest/googletest/CMakeFiles/gtest.dir/clean:
 .PHONY : gtest/googletest/CMakeFiles/gtest.dir/clean
 
 #=============================================================================
-# Target rules for target robot_control/CMakeFiles/_catkin_empty_exported_target.dir
+# Target rules for target arduino/CMakeFiles/_catkin_empty_exported_target.dir
 
 # All Build rule for target.
-robot_control/CMakeFiles/_catkin_empty_exported_target.dir/all:
-	$(MAKE) -f robot_control/CMakeFiles/_catkin_empty_exported_target.dir/build.make robot_control/CMakeFiles/_catkin_empty_exported_target.dir/depend
-	$(MAKE) -f robot_control/CMakeFiles/_catkin_empty_exported_target.dir/build.make robot_control/CMakeFiles/_catkin_empty_exported_target.dir/build
+arduino/CMakeFiles/_catkin_empty_exported_target.dir/all:
+	$(MAKE) -f arduino/CMakeFiles/_catkin_empty_exported_target.dir/build.make arduino/CMakeFiles/_catkin_empty_exported_target.dir/depend
+	$(MAKE) -f arduino/CMakeFiles/_catkin_empty_exported_target.dir/build.make arduino/CMakeFiles/_catkin_empty_exported_target.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/brainboxtayo/final_ws/build/CMakeFiles --progress-num= "Built target _catkin_empty_exported_target"
-.PHONY : robot_control/CMakeFiles/_catkin_empty_exported_target.dir/all
+.PHONY : arduino/CMakeFiles/_catkin_empty_exported_target.dir/all
 
 # Build rule for subdir invocation for target.
-robot_control/CMakeFiles/_catkin_empty_exported_target.dir/rule: cmake_check_build_system
+arduino/CMakeFiles/_catkin_empty_exported_target.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brainboxtayo/final_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 robot_control/CMakeFiles/_catkin_empty_exported_target.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 arduino/CMakeFiles/_catkin_empty_exported_target.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/brainboxtayo/final_ws/build/CMakeFiles 0
-.PHONY : robot_control/CMakeFiles/_catkin_empty_exported_target.dir/rule
+.PHONY : arduino/CMakeFiles/_catkin_empty_exported_target.dir/rule
 
 # Convenience name for target.
-_catkin_empty_exported_target: robot_control/CMakeFiles/_catkin_empty_exported_target.dir/rule
+_catkin_empty_exported_target: arduino/CMakeFiles/_catkin_empty_exported_target.dir/rule
 
 .PHONY : _catkin_empty_exported_target
 
 # clean rule for target.
-robot_control/CMakeFiles/_catkin_empty_exported_target.dir/clean:
-	$(MAKE) -f robot_control/CMakeFiles/_catkin_empty_exported_target.dir/build.make robot_control/CMakeFiles/_catkin_empty_exported_target.dir/clean
-.PHONY : robot_control/CMakeFiles/_catkin_empty_exported_target.dir/clean
+arduino/CMakeFiles/_catkin_empty_exported_target.dir/clean:
+	$(MAKE) -f arduino/CMakeFiles/_catkin_empty_exported_target.dir/build.make arduino/CMakeFiles/_catkin_empty_exported_target.dir/clean
+.PHONY : arduino/CMakeFiles/_catkin_empty_exported_target.dir/clean
 
 #=============================================================================
 # Target rules for target ps4-ros/CMakeFiles/std_msgs_generate_messages_py.dir

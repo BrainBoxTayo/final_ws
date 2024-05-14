@@ -30,10 +30,11 @@
     <!-- convert joint states to TF transform for rviz and rqt-->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
         respawn="false" output="screen">
-        <remap from="/joint_states" to="/Tayson/joint_states" />
     </node>
 
     <node name="rqt_reconfigure" pkg="rqt_gui" type="rqt_gui" output="screen">
-
     </node>
+    <rosparam command="load" file="$(find robot_control)/param/mecanum.yaml"/>
+    <node pkg="robot_control" type="mecanum_controller.py" name="mecanum" />
+    <include file="$(find ps4_ros)/launch/ps4.launch" />
 </launch>

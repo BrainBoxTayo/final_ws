@@ -1,2 +1,2 @@
-ps4-ros:robot_control:robot_description
+arduino:ps4-ros:robot_control:robot_description
 -DCATKIN_DEVEL_PREFIX=/home/brainboxtayo/final_ws/devel -DCMAKE_INSTALL_PREFIX=/home/brainboxtayo/final_ws/install -G Unix Makefiles

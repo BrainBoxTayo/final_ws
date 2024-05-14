@@ -35,6 +35,14 @@
 /home/brainboxtayo/final_ws/build/gtest/googletest/CMakeFiles/test.dir
 /home/brainboxtayo/final_ws/build/gtest/googletest/CMakeFiles/gtest_main.dir
 /home/brainboxtayo/final_ws/build/gtest/googletest/CMakeFiles/gtest.dir
+/home/brainboxtayo/final_ws/build/arduino/CMakeFiles/install/strip.dir
+/home/brainboxtayo/final_ws/build/arduino/CMakeFiles/install/local.dir
+/home/brainboxtayo/final_ws/build/arduino/CMakeFiles/install.dir
+/home/brainboxtayo/final_ws/build/arduino/CMakeFiles/list_install_components.dir
+/home/brainboxtayo/final_ws/build/arduino/CMakeFiles/rebuild_cache.dir
+/home/brainboxtayo/final_ws/build/arduino/CMakeFiles/edit_cache.dir
+/home/brainboxtayo/final_ws/build/arduino/CMakeFiles/test.dir
+/home/brainboxtayo/final_ws/build/arduino/CMakeFiles/_catkin_empty_exported_target.dir
 /home/brainboxtayo/final_ws/build/robot_control/CMakeFiles/install/strip.dir
 /home/brainboxtayo/final_ws/build/robot_control/CMakeFiles/install/local.dir
 /home/brainboxtayo/final_ws/build/robot_control/CMakeFiles/install.dir
@@ -42,7 +50,6 @@
 /home/brainboxtayo/final_ws/build/robot_control/CMakeFiles/rebuild_cache.dir
 /home/brainboxtayo/final_ws/build/robot_control/CMakeFiles/edit_cache.dir
 /home/brainboxtayo/final_ws/build/robot_control/CMakeFiles/test.dir
-/home/brainboxtayo/final_ws/build/robot_control/CMakeFiles/_catkin_empty_exported_target.dir
 /home/brainboxtayo/final_ws/build/ps4-ros/CMakeFiles/install/strip.dir
 /home/brainboxtayo/final_ws/build/ps4-ros/CMakeFiles/install.dir
 /home/brainboxtayo/final_ws/build/ps4-ros/CMakeFiles/list_install_components.dir

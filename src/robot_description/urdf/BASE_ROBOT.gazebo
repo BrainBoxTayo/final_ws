@@ -37,8 +37,7 @@
   <gazebo reference="mecanumWheelHLVR_1">
     <material>${body_color}</material>
     <mu1>0.0</mu1>
-    <mu2>0.0</mu2>
-    
+    <mu2>0.0</mu2>    
   </gazebo>
 
   <gazebo reference="mecanumWheelHLVR_2">
@@ -97,7 +96,7 @@
     <gravity>0</gravity>
   </gazebo>
 
-  <gazebo reference="pinky_finger_base_2">
+  <!-- <gazebo reference="pinky_finger_base_2">
     <material>${body_color}</material>
     <mu1>0.0</mu1>
     <mu2>0.0</mu2>
@@ -116,7 +115,7 @@
     <mu1>0.0</mu1>
     <mu2>0.0</mu2>
     <gravity>0</gravity>
-  </gazebo>
+  </gazebo> -->
 
   <gazebo reference="pinky_finger_base_1">
     <material>${body_color}</material>
@@ -212,8 +211,11 @@
   <gazebo reference="mecanumWheelHLVR_3">
     <material>${body_color}</material>
     <mu1>0.0</mu1>
-    <mu2>0.0</mu2>
-    
+    <mu2>0.0</mu2>    
+  </gazebo>
+  
+  <gazebo reference="BASE_FOREARM">
+    <fudgeFactor value="0.5"/>
   </gazebo>
 
 

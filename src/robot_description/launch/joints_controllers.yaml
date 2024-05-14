@@ -17,19 +17,19 @@ Tayson:
   HAND_pinkybase_position_controller:
     type: effort_controllers/JointPositionController
     joint: HAND_pinkybase
-    pid: {p: 700.0, i: 0.01, d: 10.0}
+    pid: {p: 10.0, i: 0.0, d: 0.0}
 
   HAND_ringbase_position_controller:
     type: effort_controllers/JointPositionController
     joint: HAND_ringbase
-    pid: {p: 700.0, i: 0.01, d: 10.0}
+    pid: {p: 10.0, i: 0.0, d: 0.0}
   
   HAND_middlebase_position_controller:
    type: effort_controllers/JointPositionController
    joint: HAND_middlebase
-   pid: {p: 700.0, i: 0.01, d: 10.0}
+   pid: {p: 10.0, i: 0.0, d: 0.0}
 
   HAND_indexbase_position_controller:
     type: effort_controllers/JointPositionController
     joint: HAND_indexbase
-    pid: {p: 700.0, i: 0.01, d: 10.0}
+    pid: {p: 10.0, i: 0.0, d: 0.0}
