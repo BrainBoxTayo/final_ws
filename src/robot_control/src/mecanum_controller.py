@@ -4,8 +4,6 @@ import rospy
 from std_msgs.msg import Float32
 from geometry_msgs.msg import Twist
 
-import math
-
 #this script allows us to convert from twist messages to wheel velocities
 
 WHEEL_SEPARATION_WIDTH = None

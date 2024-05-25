@@ -13,7 +13,7 @@
         args="-param robot_description -urdf -model Tayson" />
 
     <!-- load controllers-->
-    <rosparam command="load" file="$(find robot_description)/launch/joints_controllers.yaml" />
+    <rosparam command="load" file="$(find robot_control)/launch/joints_controllers.yaml" />
 
     <!-- Load node controller manager-->
     <node name="controller_spawner" pkg="controller_manager" type="spawner"
