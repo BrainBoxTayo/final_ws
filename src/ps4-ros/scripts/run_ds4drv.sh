@@ -1,3 +1,3 @@
 #!/bin/sh
 
-ds4drv
+sudo ds4drv
