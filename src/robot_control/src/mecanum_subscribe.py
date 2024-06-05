@@ -64,6 +64,8 @@ def listener():
     rospy.Subscriber('/Tayson/HAND_ringbase_position_controller/command', Float64, lambda data: servoCallback(data, "4"))
     rospy.Subscriber('/Tayson/HAND_middlebase_position_controller/command', Float64, lambda data: servoCallback(data, "5"))
     rospy.Subscriber('/Tayson/HAND_indexbase_position_controller/command', Float64, lambda data: servoCallback(data, "6"))
+    # Note the thumb is not included in the simulation due to some URDF issues that I did not have time to resolve
+    rospy.Subscriber('/Tayson/HAND_thumbbase_position_controller/command', Float64, lambda data: servoCallback(data, "7"))
     rospy.spin()
     
 
