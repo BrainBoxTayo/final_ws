@@ -1,5 +1,0 @@
-{
-    "sketch": "tayson_node.ino",
-    "board": "arduino:avr:uno",
-    "port": "/dev/ttyACM0"
-}
