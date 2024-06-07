@@ -5,7 +5,8 @@ from std_msgs.msg import Float32, Float64
 import bluetooth
 
 #Bluetooth MAC address of the ESP32
-ESP32_MAC_ADRESS = "D4:8A:FC:CF:AC:C6"
+# ESP32_MAC_ADRESS = "D4:8A:FC:CF:AC:C6"
+ESP32_MAC_ADRESS = "D4:8A:FC:A8:96:7A"
 port = 1
 
 # connect to the ESP32 using rfcomm

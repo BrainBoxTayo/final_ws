@@ -1,8 +1,9 @@
-#include "../lib/main.hpp"
+#include "main.hpp"
 
 #include "BluetoothSerial.h"
 
-// D4:8A:FC:CF:AC:C6
+// D4:8A:FC:CF:AC:C6 Main ESP
+// D4:8A:FC:A8:96:7A BackUP
 BluetoothSerial SerialBT;
 /*Pin assignments for 1st L298N*/
 const unsigned int d1EN_A = 14;
@@ -33,6 +34,7 @@ void setup()
   Serial.begin(115200);
   SerialBT.begin("ESP32test"); // Bluetooth device name
   Serial.println("The device started, now you can pair it with Bluetooth!");
+  Serial.setRxBufferSize(SERIAL_SIZE_RX);
 }
 
 void loop()
