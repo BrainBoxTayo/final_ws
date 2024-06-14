@@ -1,7 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="Tayson">
-  <xacro:property name="body_color" value="Gazebo/Silver">
+  <xacro:property name="body_color" value="Gazebo/Grey">
   </xacro:property>
+  <xacro:property name="base_color" value="Gazebo/Orange"></xacro:property>
+  <xacro:property name="wheel_color" value="Gazebo/Yellow"></xacro:property>
+  <material name="aquablue">
+    <color rgba="0.00784313725490196 0.8470588235294118 0.9137254901960784 1.0" />
+  </material>
 
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
@@ -10,52 +15,52 @@
   </gazebo>
 
   <gazebo>
-  <plugin name="nexus_ros_force_based_move" filename="libnexus_ros_force_based_move.so">
-    <commandTopic>cmd_vel</commandTopic>
-    <odometryTopic>odom</odometryTopic>
-    <odometryFrame>odom</odometryFrame>
-    <odometryRate>25.0</odometryRate>
-    <robotBaseFrame>dummy</robotBaseFrame>
-    <cmdVelTimeOut>0.25</cmdVelTimeOut>
-    <publishOdometryTf>0</publishOdometryTf>
-    <yaw_velocity_p_gain>1.0</yaw_velocity_p_gain>
-    <x_velocity_p_gain>15.0</x_velocity_p_gain>
-    <y_velocity_p_gain>15.0</y_velocity_p_gain>
-    <max_x_velocity>.63</max_x_velocity>
-    <max_y_velocity>.63</max_y_velocity>
-    <max_yaw_velocity>8.65</max_yaw_velocity>
-  </plugin>
+    <plugin name="nexus_ros_force_based_move" filename="libnexus_ros_force_based_move.so">
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryRate>25.0</odometryRate>
+      <robotBaseFrame>dummy</robotBaseFrame>
+      <cmdVelTimeOut>0.25</cmdVelTimeOut>
+      <publishOdometryTf>0</publishOdometryTf>
+      <yaw_velocity_p_gain>1.0</yaw_velocity_p_gain>
+      <x_velocity_p_gain>15.0</x_velocity_p_gain>
+      <y_velocity_p_gain>15.0</y_velocity_p_gain>
+      <max_x_velocity>.63</max_x_velocity>
+      <max_y_velocity>.63</max_y_velocity>
+      <max_yaw_velocity>5.6</max_yaw_velocity>
+    </plugin>
   </gazebo>
 
   <gazebo reference="base_link">
-    <material>${body_color}</material>
+    <material>${base_color}</material>
     <mu1>0.0</mu1>
     <mu2>0.0</mu2>
     <gravity>true</gravity>
   </gazebo>
 
   <gazebo reference="mecanumWheelHLVR_1">
-    <material>${body_color}</material>
+    <material>${wheel_color}</material>
     <mu1>0.0</mu1>
-    <mu2>0.0</mu2>    
+    <mu2>0.0</mu2>
   </gazebo>
 
   <gazebo reference="mecanumWheelHLVR_2">
-    <material>${body_color}</material>
+    <material>${wheel_color}</material>
     <mu1>0.0</mu1>
     <mu2>0.0</mu2>
-   
+
   </gazebo>
 
   <gazebo reference="mecanumWheelHLVR_4">
-    <material>${body_color}</material>
+    <material>${wheel_color}</material>
     <mu1>0.0</mu1>
     <mu2>0.0</mu2>
-    
+
   </gazebo>
 
   <gazebo reference="base_1">
-    <material>${body_color}</material>
+    <material>${base_color}</material>
     <mu1>0.0</mu1>
     <mu2>0.0</mu2>
     <gravity>0</gravity>
@@ -209,13 +214,13 @@
   </gazebo>
 
   <gazebo reference="mecanumWheelHLVR_3">
-    <material>${body_color}</material>
+    <material>${wheel_color}</material>
     <mu1>0.0</mu1>
-    <mu2>0.0</mu2>    
+    <mu2>0.0</mu2>
   </gazebo>
-  
+
   <gazebo reference="BASE_FOREARM">
-    <fudgeFactor value="0.5"/>
+    <fudgeFactor value="0.5" />
   </gazebo>
 
 

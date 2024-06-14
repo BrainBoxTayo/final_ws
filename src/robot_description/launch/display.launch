@@ -3,10 +3,10 @@
     <arg name="model" default="$(find robot_description)/urdf/BASE_ROBOT.urdf.xacro"/>
     <arg name="rvizconfig" default="$(find robot_description)/launch/urdf.rviz"/> 
     <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>
-    <!-- <node
+    <node
     name="robot_state_publisher"
     pkg="robot_state_publisher"
-    type="robot_state_publisher" /> -->
+    type="robot_state_publisher" />
     <node
     name="joint_state_publisher"
     pkg="joint_state_publisher_gui"

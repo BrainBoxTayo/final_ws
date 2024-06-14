@@ -1,9 +1,10 @@
 #include "main.hpp"
+#include <Arduino.h>
 /*
-* processMessage - Tokenizes String and writes name and value to Serial
-* message: String from SerialBT
-* Return: Nothing 
-*/
+ * processMessage - Tokenizes String and writes name and value to Serial
+ * message: String from SerialBT
+ * Return: Nothing
+ */
 
 void processMessage(String message)
 {
@@ -32,110 +33,161 @@ void processMessage(String message)
     }
 }
 /*
-* processMessage - Tokenizes String and writes motor speed values to the L298N
-* message: String from SerialBT
-* firstBoard: L298N motor driver 1
-* secondBoard: L298N motor driver 2
-* Return: Nothing 
-*/
+ * processMessage - Tokenizes String and writes motor speed values to the L298N
+ * message: String from SerialBT
+ * firstBoard: L298N motor driver 1
+ * secondBoard: L298N motor driver 2
+ * Return: Nothing
+ */
 
-#define MAX_SPEED_WHEEL 21
-#define MIN_SPEED_WHEEL 0
-#define LOW_PWM 0
-#define HIGH_PWM 255
-void processMessage(String message, L298NX2 firstBoard, L298NX2 secondBoard)
+void processMessage(const unsigned char *message, L298NX2 &firstBoard, L298NX2 &secondBoard, Adafruit_PWMServoDriver &pwm)
 {
-    // process Message but write to the L298N
-    // NOTE: MAX VELOCITY OF THE WHEELS - 21 rad/s (TTGEARED smh)
+    String msgString = String((const char *)message);
 
-    unsigned int conVal = 0;
     // Tokenize and process the message
-    char msgArray[message.length() + 1];
-    message.toCharArray(msgArray, message.length() + 1);
+    char msgArray[msgString.length() + 1];
+    msgString.toCharArray(msgArray, msgString.length() + 1);
 
     char *token = strtok(msgArray, " ");
+
     while (token != nullptr)
     {
         String name = token;
         token = strtok(nullptr, " ");
+
         if (token != nullptr)
         {
-            float value = atof(token);
+            float value = String(token).toFloat();
+            int speed = constrain(abs(value), MIN_SPEED_WHEEL, MAX_SPEED_WHEEL);
+            int pwmValue = map(speed, MIN_SPEED_WHEEL, MAX_SPEED_WHEEL, LOW_PWM, HIGH_PWM);
+            bool isBackward = (value < 0);
+            bool isForward = (value > 0);
+
+#if SERIAL_ENABLE == 1
             Serial.print("Name: ");
             Serial.print(name);
-            if (name == "fr,")
-            { // For the first motor
-                conVal = constrain(abs(value), MIN_SPEED_WHEEL, MAX_SPEED_WHEEL);
-                firstBoard.setSpeedA(map(conVal, MIN_SPEED_WHEEL, MAX_SPEED_WHEEL, LOW_PWM, HIGH_PWM));
+            Serial.print(" Value: ");
+            Serial.println(value);
+            // Serial.print(" Position: ");
+            // Serial.println(position);
+            // Serial.print(" Direction: ");
+            // Serial.println(isBackward ? "BACKWARD" : "FORWARD");
+#endif
 
-                if (value < 0)
-                    firstBoard.backwardA(); // if value is negative reverse
+            if (name == "fr,")
+            { // For the FRONT RIGHT motor
+                firstBoard.setSpeedA(pwmValue);
+                if (isBackward)
+                {
+                    firstBoard.runA(L298N::BACKWARD); // if value is negative reverse
+                }
+                else if (isForward)
+                {
+                    firstBoard.runA(L298N::FORWARD); // else go forward
+                }
                 else
-                    firstBoard.forwardA(); // else go forward
+                {
+                    firstBoard.runA(L298N::STOP);
+                }
             }
             else if (name == "fl,")
-            { // For the second motor
-                conVal = constrain(abs(value), MIN_SPEED_WHEEL, MAX_SPEED_WHEEL);
-                firstBoard.setSpeedB(map(conVal, MIN_SPEED_WHEEL, MAX_SPEED_WHEEL, LOW_PWM, HIGH_PWM));
-
-                if (value < 0)
-                    firstBoard.backwardB(); // if value is negative reverse
+            { // For the FRONT LEFT motor
+                firstBoard.setSpeedB(pwmValue);
+                if (isBackward)
+                {
+                    firstBoard.runB(L298N::BACKWARD); // if value is negative reverse
+                }
+                else if (isForward)
+                {
+                    firstBoard.runB(L298N::FORWARD); // else go forward
+                }
                 else
-                    firstBoard.forwardB(); // else go forward
-            }
-            else if (name == "rl,")
-            { // For the third motor
-                conVal = constrain(abs(value), MIN_SPEED_WHEEL, MAX_SPEED_WHEEL);
-                secondBoard.setSpeedA(map(conVal, MIN_SPEED_WHEEL, MAX_SPEED_WHEEL, LOW_PWM, HIGH_PWM));
-                
-                if (value < 0)
-                    secondBoard.backwardA(); // if value is negative reverse
-                else
-                    secondBoard.forwardA(); // else go forward
+                {
+                    firstBoard.runB(L298N::STOP);
+                }
             }
             else if (name == "rr,")
-            { // For the fourth motor
-                conVal = constrain(abs(value), MIN_SPEED_WHEEL, MAX_SPEED_WHEEL);
-                secondBoard.setSpeedB(map(conVal, MIN_SPEED_WHEEL, MAX_SPEED_WHEEL, LOW_PWM, HIGH_PWM));
-                
-                if (value < 0)
-                    secondBoard.backwardB(); // if value is negative reverse
+            { // For the REAR RIGHT motor
+                secondBoard.setSpeedA(pwmValue);
+                if (isBackward)
+                {
+                    secondBoard.runA(L298N::BACKWARD); // if value is negative reverse
+                }
+                else if (isForward)
+                {
+                    secondBoard.runA(L298N::FORWARD); // else go forward
+                }
                 else
-                    secondBoard.forwardB(); // else go forward
+                {
+                    secondBoard.runA(L298N::STOP);
+                }
+            }
+            else if (name == "rl,")
+            { // For the REAR LEFT motor
+                secondBoard.setSpeedB(pwmValue);
+                if (isBackward)
+                {
+                    secondBoard.runB(L298N::BACKWARD); // if value is negative reverse
+                }
+                else if (isForward)
+                {
+                    secondBoard.runB(L298N::FORWARD); // else go forward
+                }
+                else
+                {
+                    secondBoard.runA(L298N::STOP);
+                }
             }
             else if (name == "1,")
             {
-                //This is for the 2 servos at the base-forearm joint M966R
-                //RUN SOME CODE HERE FOR THE SERVO
+                // Pinky Finger
+                int angle = map((abs(value) + 1.57), 1.57, 3.14, 0, 180);
+                int position = map(angle, 0, 180, 480, 150);
+                pwm.setPWM(3, 0, position);
             }
             else if (name == "2,")
             {
-                //Wrist Servo M966R
+                // Ring Finger
+                int angle = map((abs(value) + 1.57), 1.57, 3.14, 0, 180);
+                int position = map(angle, 0, 180, 480, 150);
+                pwm.setPWM(4, 0, position);
             }
             else if (name == "3,")
             {
-                //Pinky Finger SG90s
+                // Middle Finger
+                int angle = map((abs(value) + 1.57), 1.57, 3.14, 0, 180);
+                int position = map(angle, 0, 180, 480, 100);
+                pwm.setPWM(2, 0, position);
             }
             else if (name == "4,")
             {
-                //Ring Finger SG90
+                // Index Finger
+                float angle = map((abs(value) + 1.57), 1.57, 3.14, 0, 180);
+                int position = map(angle, 0, 180, 100, 450);
+                pwm.setPWM(1, 0, position);
             }
             else if (name == "5,")
             {
-                //Middle Finger SG90
+                // Thumb
+                int angle = map((abs(value) + 1.57), 1.57, 3.14, 0, 180);
+                int position = map(angle, 0, 180, 480, 150);
+                pwm.setPWM(0, 0, position);
             }
             else if (name == "6,")
             {
-                //Index Finger SG90
+                // Arm
+                int angle = map((abs(value) + 1.57), 1.57, 3.14, 0, 180);
+                int position = map(angle, 0, 180, SERVOMIN, SERVOMAX);
+                pwm.setPWM(5, 0, position);
+                pwm.setPWM(6, 0, position);
             }
             else if (name == "7,")
             {
-                //Thumb SG90
+                // Wrist
+                int angle = map((abs(value) + 1.57), 1.57, 3.14, 0, 180);
+                int position = map(angle, 0, 180, SERVOMIN, SERVOMAX);
+                pwm.setPWM(7, 0, position);
             }
-            Serial.print(" Value: ");
-            Serial.print(value);
-            Serial.print(" || conVal: ");
-            Serial.println(conVal);
         }
         token = strtok(nullptr, " ");
     }

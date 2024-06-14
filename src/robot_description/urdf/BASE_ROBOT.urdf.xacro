@@ -669,7 +669,7 @@
   </joint>
 
   <joint name="BASE_mBASE" type="fixed">
-    <origin xyz="0.15 0.0 0.014" rpy="0 0 0" />
+    <origin xyz="0.05 0.0 0.014" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="base_1" />
   </joint>
@@ -691,7 +691,7 @@
     <parent link="base_1" />
     <child link="forearm_1" />
     <axis xyz="-0.0 -1.0 -0.0" />
-    <limit upper="1.40" lower="-1.40" effort="50" velocity="-1" />
+    <limit upper="1.40" lower="-1.40" effort="26" velocity="-1" />
   </joint>
 
   <joint name="FOREARM_hSERV" type="fixed">
@@ -705,7 +705,7 @@
     <parent link="Mg995_v1__1__1" />
     <child link="HAND_BASE_PROTO_VER_2_1" />
     <axis xyz="0.0 -0.0 -1.0" />
-    <limit upper="1.570796" lower="-1.57" effort="50" velocity="10" />
+    <limit upper="1.570796" lower="-1.57" effort="13" velocity="10" />
   </joint>
 
   <joint name="HANDCOVER" type="fixed">
@@ -720,7 +720,7 @@
     <parent link="HAND_BASE_PROTO_VER_2_1" />
     <child link="pinky_finger_base_1" />
     <axis xyz="-0.0 1.0 -0.0" />
-    <limit upper="1.570796" lower="0.0" effort="50" velocity="10" />
+    <limit upper="1.570796" lower="0.0" effort="7" velocity="10" />
   </joint>
 
   <joint name="pinkybase_pinkymiddle" type="fixed">
@@ -740,7 +740,7 @@
     <parent link="HAND_BASE_PROTO_VER_2_1" />
     <child link="inder_finger_base_3" />
     <axis xyz="0.0 1.0 0.0" />
-    <limit upper="1.570796" lower="0.0" effort="10" velocity="10" />
+    <limit upper="1.570796" lower="0.0" effort="7" velocity="10" />
   </joint>
 
   <joint name="ringbase_ringmiddle" type="fixed">
@@ -760,7 +760,7 @@
     <parent link="HAND_BASE_PROTO_VER_2_1" />
     <child link="inder_finger_base_1" />
     <axis xyz="0.0 -1.0 0.0" />
-    <limit upper="0.0" lower="-1.570796" effort="10" velocity="10" />
+    <limit upper="0.0" lower="-1.570796" effort="7" velocity="10" />
   </joint>
 
   <joint name="middlebase_middlemiddle" type="fixed">
@@ -780,7 +780,7 @@
     <parent link="HAND_BASE_PROTO_VER_2_1" />
     <child link="inder_finger_base_2" />
     <axis xyz="0.0 -1.0 0.0" />
-    <limit upper="0.0" lower="-1.570796" effort="10" velocity="10" />
+    <limit upper="0.0" lower="-1.570796" effort="7" velocity="10" />
   </joint>
 
   <joint name="indexbase_indexmiddle" type="fixed">
