@@ -691,7 +691,7 @@
     <parent link="base_1" />
     <child link="forearm_1" />
     <axis xyz="-0.0 -1.0 -0.0" />
-    <limit upper="1.40" lower="-1.40" effort="26" velocity="-1" />
+    <limit upper="0.45" lower="-1.40" effort="26" velocity="-1" />
   </joint>
 
   <joint name="FOREARM_hSERV" type="fixed">

@@ -5,13 +5,19 @@
 #include <std_msgs/Float64.h>
 #include "main.hpp"
 
-#define LDR_PIN1 4  // thumb
-#define LDR_PIN2 36 // index
-#define LDR_PIN3 39 // middle
-#define LDR_PIN4 34 // ring
-#define LDR_PIN5 35 // pinky
-#define BUTTON_PIN 18
+#define LDR_PIN1 39 // thumb
+#define LDR_PIN2 4  // index
+#define LDR_PIN3 36 // middle -BADDD
+#define LDR_PIN4 34 // ring - really good
+#define LDR_PIN5 35 // pinky - BAAAAD
+#define BUTTON_PIN 32
 #define featuresEnabler 0
+
+#define THUMPIN 13
+#define INDEXPIN 12
+#define MIDDLEPIN 14
+#define RINGPIN 27
+#define PINKYPIN 33
 
 ros::NodeHandle nh; // This is the ros node handle
 std_msgs::Float64 rollMessage;
@@ -59,12 +65,15 @@ float GyroX, GyroY, GyroZ;
 float accAngleX, accAngleY, gyroAngleZ;
 float AccErrorX, AccErrorY, GyroErrorX, GyroErrorY, GyroErrorZ;
 
-int buttonState;
-int lastButtonState = LOW;
+int buttonState = 0;
+;
+int lastButtonState = 0;
 unsigned long lastDebounceTime = 0;
-unsigned long debounceDelay = 50;
+unsigned long debounceDelay = 1000;
 
 unsigned int calibration_time = 5000;
+
+bool printer = false;
 
 // counter for IMUCOUNTER()
 int c = 0;
@@ -107,6 +116,7 @@ void setup(void)
   // delay(1000000);
 
   // Calibration
+  nh.getHardware()->setBaud(115200);
   float sensorValue = 0;
   nh.initNode();
   nh.loginfo("\nCALIBRATION STARTING\n");
@@ -114,7 +124,7 @@ void setup(void)
   while (millis() < calibration_time)
   {
     mpuUpdate(mpu, accelerometer, gyroscope);
-    sensorValue = roll;
+    sensorValue = pitch;
 
     if (sensorValue > rmax)
     {
@@ -139,7 +149,7 @@ void setup(void)
   while (millis() < calibration_time)
   {
     mpuUpdate(mpu, accelerometer, gyroscope);
-    sensorValue = pitch;
+    sensorValue = roll;
 
     if (sensorValue > pmax)
     {
@@ -166,7 +176,7 @@ void setup(void)
   nh.loginfo("\n__Close and Open Fingers NOW!!!__\n");
   while (millis() < 15000)
   {
-    sensorValue = analogRead(LDR_PIN1);
+    sensorValue = analogRead(LDR_PIN2);
     if (sensorValue < smin)
     {
       smin = sensorValue;
@@ -200,55 +210,80 @@ void setup(void)
 
 void loop()
 {
-  int reading = digitalRead(BUTTON_PIN); // Read the button
+  int reading = ldrUpdate(BUTTON_PIN); // Read the button
 
   mpuUpdate(mpu, accelerometer, gyroscope);
-  float pub_roll = constrain(roll, rmin, rmax); // constrains roll to min and max
-  pub_roll = map(roll, rmin, rmax, 0, 3.14);    // map to radians
+  float pub_roll = constrain(pitch, rmin, rmax); // constrains roll to min and max
+  pub_roll = map(pitch, rmin, rmax, 0, 3.14);    // map to radians
   pub_roll -= 1.57;
-  float pub_pitch = constrain(pitch, pmin, pmax); // constrains pitch
-  pub_pitch = map(pitch, pmin, pmax, 0, 3.14);    // map to radians
+  // I had to switch pitch and roll because of gyroscope placement
+  // On your own hand, locate the x and y axes and arrange according to your mpu placement
+  float pub_pitch = constrain(roll, pmin, pmax); // constrains pitch
+  pub_pitch = map(roll, pmin, pmax, 0, 3.14);    // map to radians
   pub_pitch -= 1.57;
 
   pitchMessage.data = pub_pitch;
   rollMessage.data = pub_roll;
+#if featuresEnabler == 1
   thumbMessage.data = ldrUpdate(LDR_PIN1);
-  indexMessage.data = ldrUpdate(LDR_PIN2);
-  middleMessage.data = ldrUpdate(LDR_PIN3);
+  indexMessage.data = -(ldrUpdate(LDR_PIN2));
+  middleMessage.data = -(ldrUpdate(LDR_PIN3));
   ringMessage.data = ldrUpdate(LDR_PIN4);
   pinkyMessage.data = ldrUpdate(LDR_PIN5);
-
+#else
+  thumbMessage.data = ldrUpdate(THUMPIN);
+  indexMessage.data = -(ldrUpdate(INDEXPIN));
+  middleMessage.data = -(ldrUpdate(MIDDLEPIN));
+  ringMessage.data = ldrUpdate(RINGPIN);
+  pinkyMessage.data = ldrUpdate(PINKYPIN);
+#endif
   // if the switch changes
   if (reading != lastButtonState)
   {
     lastDebounceTime = millis();
+    if (reading == 1)
+      printer = true;
+  }
+
+  if (printer)
+  {
+    nh.loginfo(String((millis() - lastDebounceTime) / 1000).c_str());
   }
   if (millis() - lastDebounceTime > debounceDelay)
   {
+    // nh.loginfo("IN HERE!!");
+    // nh.loginfo("READING:");
+    // nh.loginfo(String(reading).c_str());
+    // nh.loginfo("BUTTON OUTSIDE IF:");
+    // nh.loginfo(String(buttonState).c_str());
     if (reading != buttonState)
     {
-      buttonState = reading;
 
-      if (buttonState == HIGH)
+      buttonState = reading;
+      // nh.loginfo("BUTTON INSIDE IF:");
+      // nh.loginfo(String(buttonState).c_str());
+      if (buttonState == 1)
       {
 
         if (state == 3)
         {
-          nh.loginfo("STATE RESET!!");
+          nh.loginfo("STATE RESET");
           state = 0;
         }
         else
         {
           nh.loginfo("STATE CHANGE!!");
-          state += 1;
+          state++;
+          nh.loginfo(String(state).c_str());
         }
       }
     }
+    printer = false;
   }
   // STATE MACHINE
   switch (state)
   {
-  case 0:
+  case (0):
     // fingers only
     thumbServo.publish(&thumbMessage);
     indexServo.publish(&indexMessage);
@@ -257,17 +292,17 @@ void loop()
     pinkyServo.publish(&pinkyMessage);
     break;
 
-  case 1:
+  case (1):
     // arm only
     gyroPitch.publish(&pitchMessage);
     break;
 
-  case 2:
+  case (2):
     // wrist only
     gyroRoll.publish(&rollMessage);
     break;
 
-  case 3:
+  case (3):
     // ALL
     gyroRoll.publish(&rollMessage);
     gyroPitch.publish(&pitchMessage);
@@ -284,21 +319,35 @@ void loop()
   lastButtonState = reading;
 
   nh.spinOnce();
+  delay(10);
 }
+
+#if featuresEnabler == 1
 
 /*
  * ldrUpdate - updates the ldr resistance values
  * @pin: Pin the ldr is connected to on the ESP32
  * Return: sensorValue (LDR reading)
  */
-int ldrUpdate(int pin)
+float ldrUpdate(int pin)
 {
-  int sensorValue = analogRead(pin);
+  float sensorValue = analogRead(pin);
   sensorValue = constrain(sensorValue, smin, smax);
-  sensorValue = map(sensorValue, smin, smax, 0, 180);
+  sensorValue = map(sensorValue, smin, smax, 0, 1.57);
 
   return sensorValue;
 }
+#else
+float ldrUpdate(int pin)
+{
+  float sensorValue = touchRead(pin);
+  if (sensorValue < 15)
+  {
+    return 1.57;
+  }
+  return 0;
+}
+#endif
 
 /*
  * mpuUpdate - Updates the roll and pitch values from the mpu
